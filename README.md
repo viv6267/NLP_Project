@@ -65,11 +65,10 @@ nlptextSummarizer: A sub package within src that includes various components and
 # constants:
 This sub-directory could contain constant values used across the project.
 
-# for e.g: 
-
-#from pathlib import Path
-#CONFIG_FILE_PATH = Path("config/config.yaml")
-#PARAMS_FILE_PATH = Path("params.yaml")
+# defined a constant values further use in the code via __init__.py 
+    for e.g:  from pathlib import Path
+              CONFIG_FILE_PATH = Path("config/config.yaml")
+              PARAMS_FILE_PATH = Path("params.yaml")
 
 
 # Entity:
