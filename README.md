@@ -50,34 +50,14 @@ nlptextSummarizer: A sub package within src that includes various components and
 1. __init__.py:  Marks the directory as a Python package.
 
 2. configuration.py
-    (i) Format: Python script
-(ii) Purpose: Used for configuration within Python applications.
-    (iii) Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
-    (iv) Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
 
-    --for e.g dynmaic parameters and conditions
-    """
-    from textSummarizer.utils.common import read_yaml, create_directories
-    from textSummarizer.entity import (DataIngestionConfig,
-                            DataValidationConfig,
-                            DataTransformationConfig,
-                            ModelTrainerConfig,
-                            ModelEvaluationConfig)
+Format: Python script
+Purpose: Used for configuration within Python applications.
+Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
+Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
 
-    def get_data_validation_config(self) -> DataValidationConfig:
-    config = self.config.data_validation
-
-    create_directories([config.root_dir])
-
-    data_validation_config = DataValidationConfig(
-        root_dir=config.root_dir,
-        STATUS_FILE=config.STATUS_FILE,
-        ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
-    )
-
-    return data_validation_config
-
-    """
+for e.g dynmaic parameters and conditions
+   ![alt text](image-4.png)
 
 # constants:
 1. This sub-directory could contain constant values used across the project.
