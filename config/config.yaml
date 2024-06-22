@@ -1,0 +1,7 @@
+artifacts_root: artifacts
+
+data_injection:
+    root_dir: artifacts/data_injection
+    source_data: https://kaggle.com/sentimental_data/summarizer_data.zip
+    local_data_file: artifacts/data_injection/data.zip # download the zip data
+    unzip_dir: artifacts/data_injection
