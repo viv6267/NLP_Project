@@ -28,25 +28,7 @@ This directory typically contains GitHub Actions workflows for CI/CD.
 3. You want to maintain portability and compatibility across different environments and programming languages.
 
 # E.g:- 
-
-artifacts_root: artifacts
-
-data_injection:
-
-    root_dir: artifacts/data_injection
-
-    source_data: https://kaggle.com/sentimental_data/summarizer_data.zip
-
-    local_data_file: artifacts/data_injection/data.zip # download the zip data
-
-    unzip_dir: artifacts/data_injection
-
-
-logging:
-
-  level: INFO
-
-  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+![alt text](image-3.png)
 
 
 # Research
@@ -227,97 +209,14 @@ for example:
 In the context of a machine learning project, the main.py file typically serves as the entry point for running the various components of the machine learning pipeline. This can include data loading, preprocessing, model training, evaluation, and saving the trained model. The structure of main.py can vary depending on the complexity of the project and the specific requirements.
 
 For example/demo in this project perspectives:
-
-
-# yaml file
-import yaml
-# os package
-import os
-# calling data ingestion training pipeline
-from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-# calling data validation pipeline
-from textSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
-# setup config path
-def load_config(config_path):
-    with open(config_path, 'r') as file:
-        config = yaml.safe_load(file)
-    return config
-# main function
-def main(config_path):
-    # Load configuration
-    config = load_config(config_path)
-
-    # Load and preprocess data
-    data_path = config['data']['path']
-    raw_data = load_data(data_path)
-    processed_data, labels = DataIngestionTrainingPipeline(raw_data)
-
-    # Train model
-    model = DataValidationTrainingPipeline(processed_data, labels, config['model'])
-
-if __name__ == '__main__':
-
-    config_path = 'config.yaml'
-
-    main(config_path)
+![alt text](image-2.png)
 
 
 # Params.yaml
 The params.yaml file is typically used in machine learning projects to store configuration parameters and hyperparameters. This file helps in managing and organizing settings related to data processing, model training, evaluation, and other aspects of the machine learning pipeline. Using a params.yaml file ensures that these parameters are easily accessible, modifiable, and version-controlled.
 
 # for example:
-
-data:
-
-  path: "data/raw/dataset.csv"
-
-  test_size: 0.2
-
-  random_seed: 42
-
-preprocessing:
-
-  normalize: True
-
-  normalization_method: "minmax"
-
-feature_selection:
-
-    method: "PCA"
-
-    n_components: 10
-
-model:
-  type: "RandomForest"
-
-hyperparameters:
-
-    n_estimators: 100
-
-    max_depth: 10
-
-    random_state: 42
-
-training:
-
-  batch_size: 32
-
-  epochs: 50
-
-  learning_rate: 0.001
-
-  validation_split: 0.2
-
-evaluation:
-
-  metrics:
-
-    - accuracy
-
-    - precision
-
-    - recall
-
+![alt text](image-1.png)
 
 # Requirements.txt
 The requirements.txt file is used in Python projects to specify and manage the dependencies needed to run the project. It lists the libraries and their versions that the project depends on.

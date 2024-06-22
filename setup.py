@@ -3,14 +3,12 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
-
 __version__ = "0.0.1"
 
 REPO_NAME = "NLP_Project"
 AUTHOR_USER_NAME = "Vivek"
 SRC_REPO = "nlptextSummarizer"
 AUTHOR_EMAIL = "viv6267@gmail.com"
-
 
 
 setuptools.setup(
