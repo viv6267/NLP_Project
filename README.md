@@ -39,132 +39,130 @@ This directory typically contains GitHub Actions workflows for CI/CD.
 # Source Directory(src)
 > This is the main source directory containing the code for the NLP project.
 
-    >> nlptextSummarizer: A sub package within src that includes various components and utilites for text summarization.
+nlptextSummarizer: A sub package within src that includes various components and utilites for text summarization.
 
-    # Components within nlptextSummarizer:
-    1. Components nothing but the data injection, data validation, data transformation and model training.
+# Components within nlptextSummarizer:
+1. Components nothing but the data injection, data validation, data transformation and model training.
 
-    2. __init__.py: Marks the directory as a Python package.
+2. __init__.py: Marks the directory as a Python package.
 
-    # Config
-    1. __init__.py:  Marks the directory as a Python package.
+# Config
+1. __init__.py:  Marks the directory as a Python package.
 
-    2. configuration.py
-        (i) Format: Python script
-       (ii) Purpose: Used for configuration within Python applications.
-        (iii) Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
-        (iv) Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
+2. configuration.py
+    (i) Format: Python script
+(ii) Purpose: Used for configuration within Python applications.
+    (iii) Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
+    (iv) Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
 
-        --for e.g dynmaic parameters and conditions
-        """
-        from textSummarizer.utils.common import read_yaml, create_directories
-        from textSummarizer.entity import (DataIngestionConfig,
-                                   DataValidationConfig,
-                                   DataTransformationConfig,
-                                   ModelTrainerConfig,
-                                   ModelEvaluationConfig)
+    --for e.g dynmaic parameters and conditions
+    """
+    from textSummarizer.utils.common import read_yaml, create_directories
+    from textSummarizer.entity import (DataIngestionConfig,
+                            DataValidationConfig,
+                            DataTransformationConfig,
+                            ModelTrainerConfig,
+                            ModelEvaluationConfig)
 
-        def get_data_validation_config(self) -> DataValidationConfig:
-        config = self.config.data_validation
+    def get_data_validation_config(self) -> DataValidationConfig:
+    config = self.config.data_validation
 
-        create_directories([config.root_dir])
+    create_directories([config.root_dir])
 
-        data_validation_config = DataValidationConfig(
-            root_dir=config.root_dir,
-            STATUS_FILE=config.STATUS_FILE,
-            ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
-        )
+    data_validation_config = DataValidationConfig(
+        root_dir=config.root_dir,
+        STATUS_FILE=config.STATUS_FILE,
+        ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
+    )
 
-        return data_validation_config
+    return data_validation_config
 
-        """
+    """
+
+# constants:
+1. This sub-directory could contain constant values used across the project.
+
+for e.g: 
+"""
+        from pathlib import Path
+        CONFIG_FILE_PATH = Path("config/config.yaml")
+        PARAMS_FILE_PATH = Path("params.yaml")
+
+"""
+# Entity:
+It conatins the configuration of path and data types.In my secnario data injection, data validation, data transformation, modeltrainer and Model evaluation configuration available.
+
+Example:-
     
-    # constants:
-    1. This sub-directory could contain constant values used across the project.
-
-    for e.g: 
     """
-            from pathlib import Path
-            CONFIG_FILE_PATH = Path("config/config.yaml")
-            PARAMS_FILE_PATH = Path("params.yaml")
-
+    class ModelTrainerConfig:
+            root_dir: Path
+            data_path: Path
+            model_ckpt: Path
+            num_train_epochs: int
+            warmup_steps: int
+            per_device_train_batch_size: int
+            weight_decay: float
+            logging_steps: int
+            evaluation_strategy: str
+            eval_steps: int
+            save_steps: float
+            gradient_accumulation_steps: int
     """
-    # Entity:
-    It conatins the configuration of path and data types.In my secnario data injection, data validation, data transformation, modeltrainer and Model evaluation configuration available.
+# Logging:
 
-    Example:-
-          
-          """
-          class ModelTrainerConfig:
-                root_dir: Path
-                data_path: Path
-                model_ckpt: Path
-                num_train_epochs: int
-                warmup_steps: int
-                per_device_train_batch_size: int
-                weight_decay: float
-                logging_steps: int
-                evaluation_strategy: str
-                eval_steps: int
-                save_steps: float
-                gradient_accumulation_steps: int
-        """
-    # Logging:
+    > In a project folder structure, a logging folder typically contains log files generated by the  application. These log files record various events that occur during the execution of the application, which can be useful for debugging, monitoring, and auditing purposes.
 
-        > In a project folder structure, a logging folder typically contains log files generated by the  application. These log files record various events that occur during the execution of the application, which can be useful for debugging, monitoring, and auditing purposes.
+    > It capture different aspects of the application’s runtime behavior, such as general application logs, error logs, access logs, and performance logs.
 
-        > It capture different aspects of the application’s runtime behavior, such as general application logs, error logs, access logs, and performance logs.
+# Pipeline:
 
-    # Pipeline:
+    > A pipeline folder in a project typically contains files and scripts related to the data processing and machine learning pipeline. This can include steps for data ingestion, preprocessing, feature engineering, model training, evaluation, and deployment. In the context of a machine learning project, a pipeline folder helps in organizing the various stages of the workflow in a systematic manner.
 
-        > A pipeline folder in a project typically contains files and scripts related to the data processing and machine learning pipeline. This can include steps for data ingestion, preprocessing, feature engineering, model training, evaluation, and deployment. In the context of a machine learning project, a pipeline folder helps in organizing the various stages of the workflow in a systematic manner.
+            nlptextSummarizer/
+                ├── pipeline/
+                │   ├── __init__.py
+                │   ├── data_ingestion.py
+                │   ├── data_preprocessing.py
+                │   ├── feature_engineering.py
+                │   ├── model_training.py
+                │   ├── model_evaluation.py
+                │   ├── model_deployment.py
+                │   ├── pipeline_orchestration.py
+                │   ├── config/
+                │   │   ├── pipeline_config.yaml
+                │   │   └── preprocessing_config.yaml
+        
+                    for eg:    def fetch_data(source):
+                                # Code to fetch data from source
+                                    pass
 
-                nlptextSummarizer/
-                    ├── pipeline/
-                    │   ├── __init__.py
-                    │   ├── data_ingestion.py
-                    │   ├── data_preprocessing.py
-                    │   ├── feature_engineering.py
-                    │   ├── model_training.py
-                    │   ├── model_evaluation.py
-                    │   ├── model_deployment.py
-                    │   ├── pipeline_orchestration.py
-                    │   ├── config/
-                    │   │   ├── pipeline_config.yaml
-                    │   │   └── preprocessing_config.yaml
-            
-                         for eg:    def fetch_data(source):
-                                    # Code to fetch data from source
+                                    def clean_data(data):
+                                        # Code to clean data
                                         pass
 
-                                        def clean_data(data):
-                                            # Code to clean data
-                                            pass
+                                    def transform_data(data):
+                                        # Code to transform data
+                                        pass
 
-                                        def transform_data(data):
-                                            # Code to transform data
-                                            pass
 
-    
-    # Utils:
+# Utils:
 
-    > The utils folder (short for "utilities") in a project is used to store utility scripts, defination and helper functions that are used throughout the project. These utility scripts contain functions and classes that provide common functionalities needed by multiple parts of the application, thus promoting code reusability and organization.
+> The utils folder (short for "utilities") in a project is used to store utility scripts, defination and helper functions that are used throughout the project. These utility scripts contain functions and classes that provide common functionalities needed by multiple parts of the application, thus promoting code reusability and organization.
 
-        # defined a function for further use in the code via util.py    
-        for e.g: def filter_cohort_table(df->DataFrame, condition->str):
-                        if condition =='<=":
-                            df=df.filter(F.col('Salary') <= condition)
-                        else:
-                            df=df.filter(F.col('Salary') == condition)
+    # defined a function for further use in the code via util.py    
+    for e.g: def filter_cohort_table(df->DataFrame, condition->str):
+                    if condition =='<=":
+                        df=df.filter(F.col('Salary') <= condition)
+                    else:
+                        df=df.filter(F.col('Salary') == condition)
 # .gitignore
 
 A .gitignore file is used in a Git repository to specify files and directories that should be ignored by Git. This means that files and directories listed in the .gitignore file will not be tracked or committed to the repository. This is useful for excluding temporary files, build artifacts, sensitive information, and other files that do not need to be version-controlled.
 
-Here's an example of a typical .gitignore file for a Python project:
-
+# Here's an example of a typical .gitignore file for a Python project:
 IDE and Editor Specific:
-
-> Directories and files created by various IDEs and editors, such as .vscode/, .idea/, *.sublime-*.
+Directories and files created by various IDEs and editors, such as .vscode/, .idea/, *.sublime-*.
 
 # app.py
 The app.py file typically serves as the entry point for a Python application, especially for web applications built using frameworks like Flask or Django. In the context of a Flask application, app.py often contains the setup code for the application, including route definitions, configuration settings, and initialization of extensions.
