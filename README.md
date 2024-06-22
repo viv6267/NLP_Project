@@ -16,7 +16,7 @@ Documentation file explaining the project.
 This directory typically contains GitHub Actions workflows for CI/CD.
 
   # .gitkeep:-
-    >   It is just a placeholder. A dummy file, so Git will not forget about the directory, since Git tracks only files. Git will now be able to maintain this directory in the repository.
+    It is just a placeholder. A dummy file, so Git will not forget about the directory, since Git tracks only files. Git will now be able to maintain this directory in the repository.
 
 # Config file: (This directory holds configuration files.)
 1. denotes:- config.yml
@@ -28,22 +28,26 @@ This directory typically contains GitHub Actions workflows for CI/CD.
 3. You want to maintain portability and compatibility across different environments and programming languages.
 
 # E.g:- 
-"""
+
 artifacts_root: artifacts
 
 data_injection:
+
     root_dir: artifacts/data_injection
+
     source_data: https://kaggle.com/sentimental_data/summarizer_data.zip
+
     local_data_file: artifacts/data_injection/data.zip # download the zip data
+
     unzip_dir: artifacts/data_injection
 
 
 logging:
+
   level: INFO
+
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
-
-"""
 
 # Research
 
@@ -172,16 +176,16 @@ logging:
                             df=df.filter(F.col('Salary') == condition)
 # .gitignore
 
-> A .gitignore file is used in a Git repository to specify files and directories that should be ignored by Git. This means that files and directories listed in the .gitignore file will not be tracked or committed to the repository. This is useful for excluding temporary files, build artifacts, sensitive information, and other files that do not need to be version-controlled.
+A .gitignore file is used in a Git repository to specify files and directories that should be ignored by Git. This means that files and directories listed in the .gitignore file will not be tracked or committed to the repository. This is useful for excluding temporary files, build artifacts, sensitive information, and other files that do not need to be version-controlled.
 
 Here's an example of a typical .gitignore file for a Python project:
 
-    # IDE and Editor Specific:
+IDE and Editor Specific:
 
-        Directories and files created by various IDEs and editors, such as .vscode/, .idea/, *.sublime-*.
+> Directories and files created by various IDEs and editors, such as .vscode/, .idea/, *.sublime-*.
 
 # app.py
-> The app.py file typically serves as the entry point for a Python application, especially for web applications built using frameworks like Flask or Django. In the context of a Flask application, app.py often contains the setup code for the application, including route definitions, configuration settings, and initialization of extensions.
+The app.py file typically serves as the entry point for a Python application, especially for web applications built using frameworks like Flask or Django. In the context of a Flask application, app.py often contains the setup code for the application, including route definitions, configuration settings, and initialization of extensions.
 
 for example:-
 
@@ -192,31 +196,30 @@ for example:-
             return RedirectResponse(url="/docs")
 
 # Dockerfile
-
-> A Dockerfile is a script that contains a series of instructions on how to build a Docker image. Each instruction in a Dockerfile creates a layer in the image, and these layers are cached to speed up the build process. The Dockerfile defines what goes into the container, such as the base image, dependencies, application code, environment variables, and commands to run.
+A Dockerfile is a script that contains a series of instructions on how to build a Docker image. Each instruction in a Dockerfile creates a layer in the image, and these layers are cached to speed up the build process. The Dockerfile defines what goes into the container, such as the base image, dependencies, application code, environment variables, and commands to run.
 
 for example:
-1st step:- FROM python:3.9-slim
-> This line specifies the base image to use for the Docker image. In this case, it's a slim version of Python 3.9.
+# 1st step:- FROM python:3.9-slim
+##This line specifies the base image to use for the Docker image. In this case, it's a slim version of Python 3.9.
 
-2nd:- WORKDIR /app
-> This sets the working directory inside the container to /app.
+# 2nd:- WORKDIR /app
+##This sets the working directory inside the container to /app.
 
-3rd: COPY . /app
+# 3rd: COPY . /app
 > This copies the current directory contents (where the Dockerfile is located) into the container at /app.
 
-4th:- RUN pip install --no-cache-dir -r requirements.txt
+# 4th:- RUN pip install --no-cache-dir -r requirements.txt
 > This installs the Python packages specified in the requirements.txt file. 
 > The --no-cache-dir option prevents pip from caching the packages, which reduces the image size.
 
-5th:- EXPOSE 80
+# 5th:- EXPOSE 80
 > This makes port 80 available for use by the container. This is the port that the Flask application will listen on.
 
-6th: ENV NAME World
+# 6th: ENV NAME World
 
 > This sets an environment variable NAME with the value World. Environment variables can be used to configure the application.
 
-7th:- CMD ["python", "app.py"]
+# 7th:- CMD ["python", "app.py"]
 > This specifies the command to run when the container starts. In this case, it runs the app.py script using Python.
 
 # main.py
@@ -225,18 +228,21 @@ In the context of a machine learning project, the main.py file typically serves 
 
 For example/demo in this project perspectives:
 
-"""
 
+#
 import yaml
+#
 import os
+#
 from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+#
 from textSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
-
+#
 def load_config(config_path):
     with open(config_path, 'r') as file:
         config = yaml.safe_load(file)
     return config
-
+#
 def main(config_path):
     # Load configuration
     config = load_config(config_path)
@@ -251,18 +257,54 @@ def main(config_path):
 if __name__ == '__main__':
     config_path = 'config.yaml'
     main(config_path)
-"""
+
+
+# Params.yaml
+The params.yaml file is typically used in machine learning projects to store configuration parameters and hyperparameters. This file helps in managing and organizing settings related to data processing, model training, evaluation, and other aspects of the machine learning pipeline. Using a params.yaml file ensures that these parameters are easily accessible, modifiable, and version-controlled.
+
+# for example:
+
+data:
+  path: "data/raw/dataset.csv"
+  test_size: 0.2
+  random_seed: 42
+
+preprocessing:
+  normalize: True
+  normalization_method: "minmax"
+  feature_selection:
+    method: "PCA"
+    n_components: 10
+
+model:
+  type: "RandomForest"
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+
+training:
+  batch_size: 32
+  epochs: 50
+  learning_rate: 0.001
+  validation_split: 0.2
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+
 
 # Requirements.txt
+The requirements.txt file is used in Python projects to specify and manage the dependencies needed to run the project. It lists the libraries and their versions that the project depends on.
 
-> The requirements.txt file is used in Python projects to specify and manage the dependencies needed to run the project. It lists the libraries and their versions that the project depends on.
-
-# Purpose:
+# Requirements.txt Purpose:
 1. Reproducibility: Ensures that anyone running the project can install the same dependencies.
 2. Ease of Setup: Simplifies the installation process with a single command.
 
 The command to install all the dependencies:
-> pip install -r requirements.txt
+#> pip install -r requirements.txt
 
 # Setup.py
 
@@ -270,10 +312,9 @@ In Python, setup.py is a module used to build and distribute Python packages. It
 
 # For Example:-
 
-"""
 from setuptools import setup, find_packages
 
-setup(
+> setup(
     name='my_project',
     version='0.1.0',
     author='Your Name',
@@ -303,7 +344,7 @@ setup(
     ],
     python_requires='>=3.6',
 )
-"""
+
 
 # template.py 
 > The template.py file is used to create all the necessary directories and files in a project in a hierarchical manner. It also generates __init__.py files in the source directories to define them as packages, including logging information in each.
