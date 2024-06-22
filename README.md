@@ -50,11 +50,14 @@ nlptextSummarizer: A sub package within src that includes various components and
 1. __init__.py:  Marks the directory as a Python package.
 
 2. configuration.py
+# Config purpose
+1. Format: Python script
 
-Format: Python script
-Purpose: Used for configuration within Python applications.
-Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
-Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
+2. Purpose: Used for configuration within Python applications.
+
+3. Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
+
+4. Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
 
 for e.g dynmaic parameters and conditions
    ![alt text](image-4.png)
