@@ -59,19 +59,19 @@ nlptextSummarizer: A sub package within src that includes various components and
 
 4. Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
 
-for e.g dynmaic parameters and conditions
+# for e.g dynmaic parameters and conditions
    ![alt text](image-4.png)
 
 # constants:
-1. This sub-directory could contain constant values used across the project.
+This sub-directory could contain constant values used across the project.
 
-for e.g: 
-"""
-        from pathlib import Path
-        CONFIG_FILE_PATH = Path("config/config.yaml")
-        PARAMS_FILE_PATH = Path("params.yaml")
+# for e.g: 
 
-"""
+#from pathlib import Path
+#CONFIG_FILE_PATH = Path("config/config.yaml")
+#PARAMS_FILE_PATH = Path("params.yaml")
+
+
 # Entity:
 It conatins the configuration of path and data types.In my secnario data injection, data validation, data transformation, modeltrainer and Model evaluation configuration available.
 
