@@ -229,20 +229,20 @@ In the context of a machine learning project, the main.py file typically serves 
 For example/demo in this project perspectives:
 
 
-#
+# yaml file
 import yaml
-#
+# os package
 import os
-#
+# calling data ingestion training pipeline
 from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-#
+# calling data validation pipeline
 from textSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
-#
+# setup config path
 def load_config(config_path):
     with open(config_path, 'r') as file:
         config = yaml.safe_load(file)
     return config
-#
+# main function
 def main(config_path):
     # Load configuration
     config = load_config(config_path)
@@ -254,8 +254,11 @@ def main(config_path):
 
     # Train model
     model = DataValidationTrainingPipeline(processed_data, labels, config['model'])
+
 if __name__ == '__main__':
+
     config_path = 'config.yaml'
+
     main(config_path)
 
 
@@ -265,34 +268,54 @@ The params.yaml file is typically used in machine learning projects to store con
 # for example:
 
 data:
+
   path: "data/raw/dataset.csv"
+
   test_size: 0.2
+
   random_seed: 42
 
 preprocessing:
+
   normalize: True
+
   normalization_method: "minmax"
-  feature_selection:
+
+feature_selection:
+
     method: "PCA"
+
     n_components: 10
 
 model:
   type: "RandomForest"
-  hyperparameters:
+
+hyperparameters:
+
     n_estimators: 100
+
     max_depth: 10
+
     random_state: 42
 
 training:
+
   batch_size: 32
+
   epochs: 50
+
   learning_rate: 0.001
+
   validation_split: 0.2
 
 evaluation:
+
   metrics:
+
     - accuracy
+
     - precision
+
     - recall
 
 
@@ -311,40 +334,7 @@ The command to install all the dependencies:
 In Python, setup.py is a module used to build and distribute Python packages. It typically contains information about the package, such as its name, version, and dependencies, as well as instructions for building and installing the package. This information is used by the pip tool, which is a package manager for Python that allows users to install and manage Python packages from the command line. By running the setup.py file with the pip tool, you can build and distribute your Python package so that others can use it.
 
 # For Example:-
-
-from setuptools import setup, find_packages
-
-> setup(
-    name='my_project',
-    version='0.1.0',
-    author='Your Name',
-    author_email='your.email@example.com',
-    description='A short description of the project',
-    long_description=open('README.md').read(),
-    long_description_content_type='text/markdown',
-    url='https://github.com/yourusername/my_project',
-    package_dir={"": "src"},
-    packages=find_packages(where="src"), # current source file name is src
-    install_requires=[
-        'pandas==1.2.4',
-        'scikit-learn==0.24.2',
-        'pyyaml==5.4.1',
-        'joblib==1.0.1',
-        'flask==2.0.1'
-    ],
-    entry_points={
-        'console_scripts': [
-            'my_project=my_project.main:main'
-        ],
-    },
-    classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-    ],
-    python_requires='>=3.6',
-)
-
+![alt text](image.png)
 
 # template.py 
 > The template.py file is used to create all the necessary directories and files in a project in a hierarchical manner. It also generates __init__.py files in the source directories to define them as packages, including logging information in each.
