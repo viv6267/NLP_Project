@@ -1,6 +1,72 @@
-# NLP_Project: This is the root directory of my project.
-# README.md file:
-Documentation file explaining the project.
+# NLP_Summarizer_Project: This is the root directory of this project.
+
+This project is designed to build an NLP text summarizer. The project includes various stages such as data ingestion, data validation, data transformation, model training, and evaluation. The project is containerized using Docker for easy setup and deployment.
+
+## Project Structure
+NLP_SUMMARIZER_PROJECT/
+├── .github/ # GitHub-specific files (e.g., workflows)
+├── config/
+│ ├── config.yaml # Configuration file for the project
+├── research/
+│ ├── data_injection.ipynb # Jupyter notebook for data ingestion
+│ ├── trials.ipynb # Jupyter notebook for various trials and experiments
+├── src/
+│ ├── nlptextSummarizer/
+│ │ ├── components/
+│ │ │ ├── init.py # Init file for components package
+│ │ │ ├── data_ingestion.py # Script for data ingestion
+│ │ │ ├── data_transformation.py # Script for data transformation
+│ │ │ ├── data_validation.py # Script for data validation
+│ │ ├── config/
+│ │ │ ├── init.py # Init file for config package
+│ │ │ ├── configuration.py # Configuration script
+│ │ ├── constants/
+│ │ │ ├── init.py # Init file for constants package
+│ │ ├── entity/
+│ │ │ ├── init.py # Init file for entity package
+│ │ ├── logging/
+│ │ │ ├── init.py # Init file for logging package
+│ │ ├── pipeline/
+│ │ │ ├── init.py # Init file for pipeline package
+│ │ │ ├── stage_01_data_ingestion.py # Script for data ingestion pipeline stage
+│ │ │ ├── stage_02_data_validation.py # Script for data validation pipeline stage
+│ │ ├── utils/
+│ │ │ ├── init.py # Init file for utils package
+├── .gitignore # Git ignore file
+├── app.py # Flask application script
+├── Dockerfile # Dockerfile for containerization
+├── LICENSE # License file
+├── main.py # Main script to run the project
+├── params.yaml # Parameters configuration file
+├── README.md # Readme file for the project
+├── requirements.txt # Requirements file for pip
+├── setup.py # Setup script for the project
+├── template.py # Template script for setting up directories and files
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8+
+- Docker (if you want to use containerization)
+
+### Installation
+
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/username/project.git
+    cd project
+    ```
+
+2. **Install the required Python packages**:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+3. **Configure the project**:
+    Update the `config/config.yaml` and `params.yaml` files with the appropriate configuration settings for your environment.
+
+
 
 ## Workflow of the project is:
 1. Update config.yaml
@@ -12,94 +78,62 @@ Documentation file explaining the project.
 7. Update the main.py
 8. Update the appy.py
 
-# .github\workflows:- 
-This directory typically contains GitHub Actions workflows for CI/CD.
+## Running the Project
 
-  # .gitkeep:-
-    It is just a placeholder. A dummy file, so Git will not forget about the directory, since Git tracks only files. Git will now be able to maintain this directory in the repository.
+### Using Python
 
-# Config file: (This directory holds configuration files.)
-1. denotes:- config.yml
-2. format:- YAML (YAML Ain't Markup Language)
+1. **Run the main script**:
+    ```sh
+    python main.py
+    ```
 
-# Use config.yml when:
-1. You need a simple, human-readable configuration file.
-2. The configuration is static and does not require logic or calculations.
-3. You want to maintain portability and compatibility across different environments and programming languages.
+### Using Docker
 
-# E.g:- 
-![alt text](image-3.png)
+1. **Build the Docker image**:
+    ```sh
+    docker build -t nlp_summarizer_project 
+    ```
 
+2. **Run the Docker container**:
+    ```sh
+    docker run -p 4000:80 nlp_summarizer_project
+    ```
+    Access the application at `http://localhost:4000`
 
-# Research
+## Project Modules
 
-1. This directory is likely used for experiments or research-related scripts and notebooks.
-2. trails.ipynb: A Jupyter notebook for conducting experiments or trails.
+### Configuration (`config`)
 
-# Source Directory(src)
-> This is the main source directory containing the code for the NLP project.
+Contains the configuration files for the project. `config.yaml` includes general configurations, while `params.yaml` stores hyperparameters and other settings.
 
-nlptextSummarizer: A sub package within src that includes various components and utilites for text summarization.
+### Research (`research`)
 
-# Components within nlptextSummarizer:
-1. Components nothing but the data injection, data validation, data transformation and model training.
+Contains Jupyter notebooks for  experiments or research-related scripts and notebooks.
 
-2. __init__.py: Marks the directory as a Python package.
+### Source Code (`src`)
 
-# Config
-1. __init__.py:  Marks the directory as a Python package.
+- **Components**:
+  - `data_ingestion.py`: Script for data ingestion.
+  - `data_transformation.py`: Script for data transformation.
+  - `data_validation.py`: Script for data validation.
 
-2. configuration.py
-# Config purpose
-1. Format: Python script
+- **Config**:
+  - `configuration.py`: Script for loading and managing configuration settings.
 
-2. Purpose: Used for configuration within Python applications.
+- **Constants**:
+  - Contains constant values used across the project.
 
-3. Data Representation: Python files can contain executable code, allowing dynamic configurations based on logic.
+- **Entity**:
+  - Contains data classes for configuration entities.
 
-4. Usage: Python files are used in scenarios where the configuration might need to include conditional logic, calculations, or other dynamic behavior that can't be easily represented in a static configuration file.
+- **Logging**:
+  - Contains logging setup for the project.
 
-# for e.g dynmaic parameters and conditions
-   ![alt text](image-4.png)
+- **Pipeline**:
+  - `stage_01_data_ingestion.py`: Data ingestion stage of the pipeline.
+  - `stage_02_data_validation.py`: Data validation stage of the pipeline.
 
-# constants:
-This sub-directory could contain constant values used across the project.
-
-# defined a constant values further use in the code via __init__.py 
-    for e.g:  from pathlib import Path
-              CONFIG_FILE_PATH = Path("config/config.yaml")
-              PARAMS_FILE_PATH = Path("params.yaml")
-
-
-# Entity:
-It conatins the configuration of path and data types.In my secnario data injection, data validation, data transformation, modeltrainer and Model evaluation configuration available.
-
-Example:-
-    
-    """
-    class ModelTrainerConfig:
-            root_dir: Path
-            data_path: Path
-            model_ckpt: Path
-            num_train_epochs: int
-            warmup_steps: int
-            per_device_train_batch_size: int
-            weight_decay: float
-            logging_steps: int
-            evaluation_strategy: str
-            eval_steps: int
-            save_steps: float
-            gradient_accumulation_steps: int
-    """
-# Logging:
-In a project folder structure, a logging folder typically contains log files generated by the  application. These log files record various events that occur during the execution of the application, which can be useful for debugging, monitoring, and auditing purposes.
-
-It capture different aspects of the application’s runtime behavior, such as general application logs, error logs, access logs, and performance logs.
-
-# Pipeline:
-A pipeline folder in a project typically contains files and scripts related to the data processing and machine learning pipeline. This can include steps for data ingestion, preprocessing, feature engineering, model training, evaluation, and deployment. In the context of a machine learning project, a pipeline folder helps in organizing the various stages of the workflow in a systematic manner.
-
-            nlptextSummarizer/
+        nlptextSummarizer/
                 ├── pipeline/
                 │   ├── __init__.py
                 │   ├── data_ingestion.py
@@ -112,50 +146,16 @@ A pipeline folder in a project typically contains files and scripts related to t
                 │   ├── config/
                 │   │   ├── pipeline_config.yaml
                 │   │   └── preprocessing_config.yaml
-        
-                    for eg:    def fetch_data(source):
-                                # Code to fetch data from source
-                                    pass
+- **Utils**:
+  - Utility scripts(classes and functions) used across the project.
 
-                                    def clean_data(data):
-                                        # Code to clean data
-                                        pass
+### App Script (`app.py`)
 
-                                    def transform_data(data):
-                                        # Code to transform data
-                                        pass
+The entry point for the Flask web application.
 
+### Dockerfile
 
-# Utils:
-The utils folder (short for "utilities") in a project is used to store utility scripts, defination and helper functions that are used throughout the project. These utility scripts contain functions and classes that provide common functionalities needed by multiple parts of the application, thus promoting code reusability and organization.
-
-    # defined a function for further use in the code via util.py    
-    for e.g: def filter_cohort_table(df->DataFrame, condition->str):
-                    if condition =='<=":
-                        df=df.filter(F.col('Salary') <= condition)
-                    else:
-                        df=df.filter(F.col('Salary') == condition)
-# .gitignore
-
-A .gitignore file is used in a Git repository to specify files and directories that should be ignored by Git. This means that files and directories listed in the .gitignore file will not be tracked or committed to the repository. This is useful for excluding temporary files, build artifacts, sensitive information, and other files that do not need to be version-controlled.
-
-# Here's an example of a typical .gitignore file for a Python project:
-IDE and Editor Specific:
-Directories and files created by various IDEs and editors, such as .vscode/, .idea/, *.sublime-*.
-
-# app.py
-The app.py file typically serves as the entry point for a Python application, especially for web applications built using frameworks like Flask or Django. In the context of a Flask application, app.py often contains the setup code for the application, including route definitions, configuration settings, and initialization of extensions.
-
-for example:-
-
-        text:str = "What is Text Summarization?"
-        app = FastAPI()
-        @app.get("/", tags=["authentication"])
-        async def index():
-            return RedirectResponse(url="/docs")
-
-# Dockerfile
-A Dockerfile is a script that contains a series of instructions on how to build a Docker image. Each instruction in a Dockerfile creates a layer in the image, and these layers are cached to speed up the build process. The Dockerfile defines what goes into the container, such as the base image, dependencies, application code, environment variables, and commands to run.
+Contains instructions for building the Docker image for the project.
 
 for example:
 # 1st step:- FROM python:3.9-slim
@@ -180,48 +180,33 @@ This sets an environment variable NAME with the value World. Environment variabl
 # 7th:- CMD ["python", "app.py"]
 This specifies the command to run when the container starts. In this case, it runs the app.py script using Python.
 
-# main.py
 
-In the context of a machine learning project, the main.py file typically serves as the entry point for running the various components of the machine learning pipeline. This can include data loading, preprocessing, model training, evaluation, and saving the trained model. The structure of main.py can vary depending on the complexity of the project and the specific requirements.
+### Main Script (`main.py`)
 
-For example/demo in this project perspectives:
-![alt text](image-2.png)
+Orchestrates the entire pipeline, calling functions from the various pipeline scripts.
 
+## License
 
-# Params.yaml
-The params.yaml file is typically used in machine learning projects to store configuration parameters and hyperparameters. This file helps in managing and organizing settings related to data processing, model training, evaluation, and other aspects of the machine learning pipeline. Using a params.yaml file ensures that these parameters are easily accessible, modifiable, and version-controlled.
+This project is licensed under the MIT License - see the file for details.
 
-# for example:
-![alt text](image-1.png)
+## Setup
 
-# Requirements.txt
-The requirements.txt file is used in Python projects to specify and manage the dependencies needed to run the project. It lists the libraries and their versions that the project depends on.
+## Setup Script (`setup.py`)
 
-# Requirements.txt Purpose:
-1. Reproducibility: Ensures that anyone running the project can install the same dependencies.
-2. Ease of Setup: Simplifies the installation process with a single command.
+The Setup file conatins metadata, dependencies, and entry points.
 
-The command to install all the dependencies:
-#> pip install -r requirements.txt
+**Key Sections**:
 
-# Setup.py
-
-In Python, setup.py is a module used to build and distribute Python packages. It typically contains information about the package, such as its name, version, and dependencies, as well as instructions for building and installing the package. This information is used by the pip tool, which is a package manager for Python that allows users to install and manage Python packages from the command line. By running the setup.py file with the pip tool, you can build and distribute your Python package so that others can use it.
-
-# For Example:-
-![alt text](image.png)
-
-# template.py 
-The template.py file is used to create all the necessary directories and files in a project in a hierarchical manner. It also generates __init__.py files in the source directories to define them as packages, including logging information in each.
+- **Metadata**:
+  - Includes the project name, version, author details, and description.
+- **Packages**:
+  - Lists the Python packages to be included in the distribution.
+- **Dependencies**:
+  - Specifies the external libraries required for the project.
+- **Entry Points**:
+  - Defines the command-line scripts provided by the package.
 
 
 
-
-
-
-
-
- 
-
-
+This `README.md` file provides a clear and concise overview of the project structure, setup instructions, and explanations of each module and its purpose.
 
