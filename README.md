@@ -3,45 +3,45 @@
 This project is designed to build an NLP text summarizer. The project includes various stages such as data ingestion, data validation, data transformation, model training, and evaluation. The project is containerized using Docker for easy setup and deployment.
 
 ## Project Structure
-NLP_SUMMARIZER_PROJECT/
-├── .github/ # GitHub-specific files (e.g., workflows)
-├── config/
-│ ├── config.yaml # Configuration file for the project
-├── research/
-│ ├── data_injection.ipynb # Jupyter notebook for data ingestion
-│ ├── trials.ipynb # Jupyter notebook for various trials and experiments
-├── src/
-│ ├── nlptextSummarizer/
-│ │ ├── components/
-│ │ │ ├── init.py # Init file for components package
-│ │ │ ├── data_ingestion.py # Script for data ingestion
-│ │ │ ├── data_transformation.py # Script for data transformation
-│ │ │ ├── data_validation.py # Script for data validation
-│ │ ├── config/
-│ │ │ ├── init.py # Init file for config package
-│ │ │ ├── configuration.py # Configuration script
-│ │ ├── constants/
-│ │ │ ├── init.py # Init file for constants package
-│ │ ├── entity/
-│ │ │ ├── init.py # Init file for entity package
-│ │ ├── logging/
-│ │ │ ├── init.py # Init file for logging package
-│ │ ├── pipeline/
-│ │ │ ├── init.py # Init file for pipeline package
-│ │ │ ├── stage_01_data_ingestion.py # Script for data ingestion pipeline stage
-│ │ │ ├── stage_02_data_validation.py # Script for data validation pipeline stage
-│ │ ├── utils/
-│ │ │ ├── init.py # Init file for utils package
-├── .gitignore # Git ignore file
-├── app.py # Flask application script
-├── Dockerfile # Dockerfile for containerization
-├── LICENSE # License file
-├── main.py # Main script to run the project
-├── params.yaml # Parameters configuration file
-├── README.md # Readme file for the project
-├── requirements.txt # Requirements file for pip
-├── setup.py # Setup script for the project
-├── template.py # Template script for setting up directories and files
+            NLP_SUMMARIZER_PROJECT/
+            ├── .github/ # GitHub-specific files (e.g., workflows)
+            ├── config/
+            │ ├── config.yaml # Configuration file for the project
+            ├── research/
+            │ ├── data_injection.ipynb # Jupyter notebook for data ingestion
+            │ ├── trials.ipynb # Jupyter notebook for various trials and experiments
+            ├── src/
+            │ ├── nlptextSummarizer/
+            │ │ ├── components/
+            │ │ │ ├── init.py # Init file for components package
+            │ │ │ ├── data_ingestion.py # Script for data ingestion
+            │ │ │ ├── data_transformation.py # Script for data transformation
+            │ │ │ ├── data_validation.py # Script for data validation
+            │ │ ├── config/
+            │ │ │ ├── init.py # Init file for config package
+            │ │ │ ├── configuration.py # Configuration script
+            │ │ ├── constants/
+            │ │ │ ├── init.py # Init file for constants package
+            │ │ ├── entity/
+            │ │ │ ├── init.py # Init file for entity package
+            │ │ ├── logging/
+            │ │ │ ├── init.py # Init file for logging package
+            │ │ ├── pipeline/
+            │ │ │ ├── init.py # Init file for pipeline package
+            │ │ │ ├── stage_01_data_ingestion.py # Script for data ingestion pipeline stage
+            │ │ │ ├── stage_02_data_validation.py # Script for data validation pipeline stage
+            │ │ ├── utils/
+            │ │ │ ├── init.py # Init file for utils package
+            ├── .gitignore # Git ignore file
+            ├── app.py # Flask application script
+            ├── Dockerfile # Dockerfile for containerization
+            ├── LICENSE # License file
+            ├── main.py # Main script to run the project
+            ├── params.yaml # Parameters configuration file
+            ├── README.md # Readme file for the project
+            ├── requirements.txt # Requirements file for pip
+            ├── setup.py # Setup script for the project
+            ├── template.py # Template script for setting up directories and files
 
 ## Getting Started
 
