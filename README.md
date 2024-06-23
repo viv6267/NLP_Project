@@ -158,27 +158,27 @@ The entry point for the Flask web application.
 Contains instructions for building the Docker image for the project.
 
 for example:
-# 1st step:- FROM python:3.9-slim
-##This line specifies the base image to use for the Docker image. In this case, it's a slim version of Python 3.9.
+-**1st step:- FROM python:3.9-slim**
+- This line specifies the base image to use for the Docker image. In this case, it's a slim version of Python 3.9.
 
-# 2nd:- WORKDIR /app
-##This sets the working directory inside the container to /app.
+-**2nd:- WORKDIR /app**
+- This sets the working directory inside the container to /app.
 
-# 3rd: COPY . /app
-This copies the current directory contents (where the Dockerfile is located) into the container at /app.
+-**3rd: COPY . /app**
+- This copies the current directory contents (where the Dockerfile is located) into the container at /app.
 
-# 4th:- RUN pip install --no-cache-dir -r requirements.txt
-This installs the Python packages specified in the requirements.txt file. 
-The --no-cache-dir option prevents pip from caching the packages, which reduces the image size.
+-**4th:- RUN pip install --no-cache-dir -r requirements.txt**
+- This installs the Python packages specified in the requirements.txt file. 
+- The --no-cache-dir option prevents pip from caching the packages, which reduces the image size.
 
-# 5th:- EXPOSE 80
-This makes port 80 available for use by the container. This is the port that the Flask application will listen on.
+-**5th:- EXPOSE 80**
+-This makes port 80 available for use by the container. This is the port that the Flask application will listen on.
 
-# 6th: ENV NAME World
-This sets an environment variable NAME with the value World. Environment variables can be used to configure the application.
+-**6th: ENV NAME World**
+- This sets an environment variable NAME with the value World. Environment variables can be used to configure the application.
 
-# 7th:- CMD ["python", "app.py"]
-This specifies the command to run when the container starts. In this case, it runs the app.py script using Python.
+-**7th:- CMD ["python", "app.py"]**
+- This specifies the command to run when the container starts. In this case, it runs the app.py script using Python.
 
 
 ### Main Script (`main.py`)
