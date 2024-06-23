@@ -1,4 +1,4 @@
-# NLP_Summarizer_Project: This is the root directory of this project.
+# NLP_Project: This is the root directory of this project.
 
 This project is designed to build an NLP text summarizer. The project includes various stages such as data ingestion, data validation, data transformation, model training, and evaluation. The project is containerized using Docker for easy setup and deployment.
 
