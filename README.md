@@ -172,7 +172,7 @@ for example:
 - The --no-cache-dir option prevents pip from caching the packages, which reduces the image size.
 
 -**5th:- EXPOSE 80**
--This makes port 80 available for use by the container. This is the port that the Flask application will listen on.
+- This makes port 80 available for use by the container. This is the port that the Flask application will listen on.
 
 -**6th: ENV NAME World**
 - This sets an environment variable NAME with the value World. Environment variables can be used to configure the application.
